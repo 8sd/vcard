@@ -1,0 +1,104 @@
+<!doctype html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Dudas VCard</title>
+        <meta name="description" content="dudas vcard">
+        <meta name="author" content="dudas">
+        
+        <!--https://fontawesome.com/how-to-use/on-the-web/setup/hosting-font-awesome-yourself-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+        <style>
+            body {
+                margin: 40px;
+            }
+            
+            i {
+                position:absolute;
+            }
+            
+            p {
+                position:absolute;
+            }
+
+            .wrapper {
+                display: grid;
+                grid-template-rows: 100px 100px 100px 100px;
+                grid-template-columns: 100px 100px 100px;
+                grid-gap: 10px;
+                background-color: #fff;
+                color: #444;
+            }
+
+            .box {
+                background-color: #444;
+                color: #fff;
+                border-radius: 5px;
+                /*   padding: 20px; */
+                font-size: 150%;
+                cursor: pointer;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            .box i{
+                opacity: 1;
+                transition: all ease 0.8s;
+            }
+
+            .box:hover i{
+                opacity: 0;
+            }
+            
+            .box p{
+                opacity: 0;
+                transition: all ease 0.8s;
+            }
+
+            .box:hover p{
+                opacity: 1;
+            }
+            
+            footer {
+                position:absolute;
+                bottom:0;
+                width:98%;
+                height:22px;   /* Height of the footer */
+                background: red;
+                font-size:20px;
+                text-align: right;
+            }
+        </style>
+        
+        <script>
+            function toggleTile(tile) {
+                alert("FOO");
+            }
+        </script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="box mail"><i class="fas fa-envelope"></i><p>mail</p></div>
+            <div class="box tel"><i class="fas fa-mobile"></i><p></p></div>
+            <div class="box slack"><i class="fab fa-slack-hash"></i><p></p></div>
+            <div class="box wa"><i class="fab fa-whatsapp"></i><p></p></div>
+            <div class="box tg"><i class="fab fa-telegram-plane"></i><p></p></div>
+            <div class="box disc"><i class="fab fa-discord"></i><p></p></div>
+            <div class="box irc"><!--substitute with: bubble(IRC)-->
+                    <i class="fas fa-info-circle"></i><p></p></div>
+            <div class="box matrix"><p>Matrix</p></div>
+            <div class="box li"><i class="fab fa-linkedin-in"></i><p></p></div>
+            <div class="box gh"><i class="fab fa-github"><p></p></div>
+        </div>
+        
+        <div class="footer">
+            <a href="https://github.com/8sd/vcard"><i class="fab fa-github"></i></a>
+            <i class="fab fa-creative-commons"></i>
+            <i class="fab fa-creative-commons-by"></i>
+        </div>
+    </body>
+</html>
