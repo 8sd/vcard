@@ -9,7 +9,7 @@
         <meta name="author" content="dudas">
         
         <!--https://fontawesome.com/how-to-use/on-the-web/setup/hosting-font-awesome-yourself-->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+        
         <style>
             #body {
                 background: #2f3234;
@@ -68,7 +68,7 @@
             }
         </style>
 
-        <script>
+        <script>//All script for handling the background image
             var counter = 0;
             var oldWidth = 0;
             var oldHeight = 0;
@@ -91,8 +91,18 @@
                 }
             }
         </script>
+
+        <script>//Script for errorhandling if fontawesome cannot be loaded
+        var faWasLoaded = 0;
+
+        async function faLoad(){
+        }
+        </script>
+        <link onerror="faWasLoaded=1;" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+        
     </head>
-    <body id="body" onload="loadBackground()" onresize="loadBackground()">
+    <body id="body" onload="loadBackground(); faLoad()" onresize="loadBackground(); faLoad()">
         <div class="trc">
             <a href="https://github.com/8sd/vcard" class="gh"><i class="fab fa-github"></i></a>
         </div>
