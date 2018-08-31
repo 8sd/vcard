@@ -11,8 +11,8 @@
         <!--https://fontawesome.com/how-to-use/on-the-web/setup/hosting-font-awesome-yourself-->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
         <style>
-            html {
-                background-color: #2f3234;
+            #body {
+                background: #2f3234;
             }        
 
             i {
@@ -67,8 +67,32 @@
                 color: #444;
             }
         </style>
+
+        <script>
+            var counter = 0;
+            var oldWidth = 0;
+            var oldHeight = 0;
+            function sleep(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+
+            async function loadBackground () {
+                let me = ++counter;
+                await sleep(1000);
+                if (me == counter){
+                    if (screen.width > oldWidth || screen.height > oldHeight){
+                        console.log('oldw: ' + oldWidth);
+                        console.log('oldh: ' + oldHeight);
+                        
+                        document.getElementById("body").style.background="#2f3234 url('https://source.unsplash.com/random/" + screen.width + "x" + screen.height + "'";
+                    }
+                    oldWidth = screen.width;
+                    oldHeight = screen.height;
+                }
+            }
+        </script>
     </head>
-    <body>
+    <body id="body" onload="loadBackground()" onresize="loadBackground()">
         <div class="trc">
             <a href="https://github.com/8sd/vcard" class="gh"><i class="fab fa-github"></i></a>
         </div>
@@ -79,7 +103,7 @@
                 </div>
             </a>
             <a href="tel:+49123456789">
-                <div class="box tel">
+                <div class="box tel">
                     <i class="fas fa-mobile"></i>
                 </div>
             </a>
