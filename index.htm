@@ -5,60 +5,77 @@
         <meta charset="utf-8">
 
         <title>VCard</title>
-        <meta name="description" content="duda's vcard">
-        <meta name="author" content="dudas">
+        <meta name="description" content="VCard">
+        <meta name="author" content="8sd">
         
         <style>
-            #body { background: #2f3234; }        
+            #body { background: #2f3234; }
 
-            i { position:absolute; }
+            #wrapper {
+                display: flex;
+                flex-flow: column wrap;
+                align-items: stretch;
+                align-content: stretch;
 
-            #wrapper { 
-                display: grid;
-                grid-template-rows: 30vmin 30vmin 30vmin;
-                grid-template-columns: 30vmin 30vmin 30vmin;
-                grid-gap: 1vmin;
-                color: #444;
-
-                width: 94vmin;
-                height: 94vmin;
-                margin: 4vmin auto auto auto;
+                margin: 2vmin;
+                height: 95vh;
             }
 
             .box {
                 background-color: #444;
                 color: #fff;
                 border-radius: 5px;
-                font-size: 10vmin;
+                font-size: 30px;
 
                 display: flex;
                 justify-content: center;
                 align-items: center;
 
-                height: 30vmin;
-                width: 30vmin;
+                margin: 2vmin;
+
+                flex-grow: 1;
             }
 
             svg {
                 fill: #fff;
-                height: 10vmin;
+                height: 30px;
                 width: auto;
             }
 
             .trc {
                 position: absolute; 
                 top: 0; 
-                right: 1em; 
-                border: 0;
+                right: 0; 
 
+                font-size: 3vmin;
+                color: #444;
             }
-
-            a:link, a:visited { color: #444; }
         </style>
 
         <script>//Script for loading json with personal data
             async function contentLoad () {
-                var response = await fetch("/info.json", {	method: 'GET' });
+                var urlToInfo="/info.json";
+                var urlParams;
+                (window.onpopstate = function () {
+                    var match,
+                        pl     = /\+/g,  // Regex for replacing addition symbol with a space
+                        search = /([^&=]+)=?([^&]*)/g,
+                        decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
+                        query  = window.location.search.substring(1);
+
+                    urlParams = {};
+                    while (match = search.exec(query)) {
+                        urlParams[decode(match[1])] = decode(match[2]);
+                    }
+                })();
+                
+                if (urlParams["info"] !== undefined) {
+                    urlToInfo = urlParams["info"];
+                    console.log(urlParams["info"]);
+                }
+
+                console.log(urlToInfo);
+                var response = await fetch(urlToInfo, {	method: 'GET' });
                 if (response.status != 200) {
                     alert('Contact infos could not be loaded\n error ' + response.status);
                     return (-1);
@@ -114,7 +131,7 @@
     </head>
     <body id="body" onload="contentLoad(); loadBackground(); faLoad();" onresize="loadBackground(); faLoad()">
         <div class="trc">
-            <a href="https://github.com/8sd/vcard" class="gh"><i class="fab fa-github"></i></a>
+            <i class="fab fa-github" onclick="window.location='https://github.com/8sd/vcard'"></i>
         </div>
         <div id="wrapper">
             
