@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
 
-        <title>Dudas VCard</title>
+        <title>VCard</title>
         <meta name="description" content="dudas vcard">
         <meta name="author" content="dudas">
         
@@ -56,7 +56,7 @@
             a:link, a:visited { color: #444; }
         </style>
 
-        <script>//All script for handling the background image
+        <script>//Script for handling the background image
             var counter = 0;
             var oldWidth = 0;
             var oldHeight = 0;
@@ -88,9 +88,20 @@
         </script>
         <link onerror="faWasLoaded=1;" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
-        
+        <script>//Script for loading json with personal data
+            async function contentLoad () {
+                var response = await fetch("/info.json", {	method: 'GET' });
+                if (response.status != 200) {
+                    alert('Contact infos could not be loaded\n error ' + response.status);
+                    return (-1);
+                }
+                response = await response.json();
+                document.title = response.name + "'s VCard";
+
+            }
+        </script>
     </head>
-    <body id="body" onload="loadBackground(); faLoad()" onresize="loadBackground(); faLoad()">
+    <body id="body" onload="loadBackground(); faLoad(); contentLoad()" onresize="loadBackground(); faLoad()">
         <div class="trc">
             <a href="https://github.com/8sd/vcard" class="gh"><i class="fab fa-github"></i></a>
         </div>

@@ -1,0 +1,17 @@
+{
+    "name" : "Name",
+    "channels" : [
+        {
+            "icon": "",
+            "alticon": "",
+            "link": "",
+            "altlink": ""
+        }
+    ],
+    "colors" : {
+        "background" : "#2f3234",
+        "unplash" : true,
+        "box" : "#444",
+        "text" : "#fff" 
+    }
+}
