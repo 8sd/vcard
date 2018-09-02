@@ -26,6 +26,7 @@
                 color: #fff;
                 border-radius: 5px;
                 font-size: 30px;
+                transition: font-size .3s;
 
                 display: flex;
                 justify-content: center;
@@ -38,10 +39,19 @@
                 cursor: pointer;
             }
 
+            .box:hover {
+                font-size: 50px;
+            }
+
             svg {
                 fill: #fff;
                 height: 30px;
                 width: auto;
+                transition: height .3s;
+            }
+            
+            .box:hover svg {
+                height: 50px;
             }
 
             .trc {
